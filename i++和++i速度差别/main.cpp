@@ -19,5 +19,5 @@ int main(){
 	}
 	cout << "i++耗时:" << (GetTickCount() - timeStart) << endl;
 	system("pause");
-	//经过测试,日了狗一样的竟然i++更快！！！
+	//经过测试,日了狗一样的竟然i++更快！！！，所以平时就用i++吧；
 }
