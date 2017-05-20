@@ -19,11 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{799F5E4A-9843-43F9-83E8-B6AFA4C5D7D2}</ProjectGuid>
+    <ProjectGuid>{D2B66E1C-F5F4-4102-95B2-E7269675991D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>i和i速度差别</RootNamespace>
+    <RootNamespace>My03_递归测试</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>02_i++和++i速度差别和返回值区别</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
