@@ -12,6 +12,13 @@ int main()
 	//char str1[];  //1.数组必须指明大小，2.数组不能后面再赋值
 	//str1 = "Hello"; 
 
+	char *str2 = "Hello1"; //指针可以后面再赋值
+	str2 = "hello2";
+	cout << str2 << endl;
+
+	*str2 = 'a'; //虽然编译不报错，运行时会出错，常量区不允许更改
+	cout << str2 << endl;
+
 	system("pause");
     return 0;
 }
