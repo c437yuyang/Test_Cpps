@@ -20,7 +20,7 @@ public:
 
 };
 
-int TestStatic::memCount = 0; //常量成员必须在外部声明(全局范围)
+int TestStatic::memCount = 0; //常量成员必须(必须)在外部声明(全局范围)
 
 int main()
 {

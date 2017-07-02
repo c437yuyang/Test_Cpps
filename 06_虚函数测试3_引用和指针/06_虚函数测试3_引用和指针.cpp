@@ -31,7 +31,7 @@ int main()
 	B b;
 	A &refA = b;
 	A *pA = &b; //可以看到指针和引用都会产生多态效果
-	vector
+	//vector
 	refA.printInfo();
 	pA->printInfo();
 

@@ -19,10 +19,30 @@ class A
 	enum { red, green, blue } color;
 }a;
 
+class A1
+{
+	char c;
+	int *pInt; //最小为指针，四字节，所以总共8
+}a1;
+
+typedef union {
+	long i;
+	int k[5];
+	char c;
+} DATE;
+struct data {
+	int cat;
+	DATE cow;
+	double dog;
+	char c;
+} too;
+
+
 int main()
 {
 
 	cout << sizeof(A) << endl; //24
+	cout << sizeof(A1) << endl; //8
 
 	///实例化class A
 
@@ -31,10 +51,12 @@ int main()
 	//	空函数不占取字节
 	//	未实例化指针不占取字节
 	//	枚举类型占取4个字节
+	//  指针类型占取4字节，也能充当最小单元
 
 	//	总共占取4 + 16 + 4 = 24个字节
 
-
+	cout << sizeof(DATE) << endl; //20,union里面最大单元是Int[5]，为20，但对齐的时候，是看最小基本元素的大小，比如这里就是看long的大小来进行对齐
+	cout << sizeof(too) << endl;//40,对齐的时候，是看最小基本元素的大小，这里是double，就按照8的倍数来
 	system("pause");
     return 0;
 }

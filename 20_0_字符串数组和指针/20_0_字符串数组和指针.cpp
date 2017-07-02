@@ -16,9 +16,20 @@ int main()
 	str2 = "hello2";
 	cout << str2 << endl;
 
-	*str2 = 'a'; //虽然编译不报错，运行时会出错，常量区不允许更改
+	//*str2 = 'a'; //虽然编译不报错，运行时会出错，常量区不允许更改
 	cout << str2 << endl;
 
+
+	char str3[10] = "aaaa";
+	char str3_1[10] = { "aaaa" }; //二者等价
+
+
+	char *str4 = "hello"; 
+	char *str5 = "hello";
+	cout << (str4 == str5) << endl; //1
+	cout << ("hello" == "hello") << endl;//1 说明常量是固定位置的
+
+
 	system("pause");
-    return 0;
+	return 0;
 }

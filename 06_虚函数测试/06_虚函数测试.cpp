@@ -26,10 +26,10 @@ int main()
 {
 	Base b(2);
 	Derived d(3);
-	b.display();
-	d.display();
+	b.display();//2
+	d.display();//3
 	Base *p = &d;
-	p->display();
+	p->display();//Ðéº¯Êý,3
 	system("pause");
 	return 0;
 }

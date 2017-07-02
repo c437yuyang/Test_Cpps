@@ -12,6 +12,10 @@ int main()
 	//http://blog.csdn.net/nicky_zs/article/details/4053146
 	cout << (5 > 2 > 7 > 8) << endl; //左到右的结合方向，所以0
 
+
+	int x = 10;
+	x += x -= x - x; //从右往左
+	cout << x << endl; //20  
 	system("pause");
 	return 0;
 }
