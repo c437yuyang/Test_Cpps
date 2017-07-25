@@ -13,7 +13,7 @@ int main()
 	int *p = new int[20]();
 	int p1[] = { 1,2,34,445 };
 
-	auto it = begin(p); //报错，看来不能
+	//auto it = begin(p); //报错，看来不能
 	auto it1 = begin(p1); //栈上的数组才可以
 
 

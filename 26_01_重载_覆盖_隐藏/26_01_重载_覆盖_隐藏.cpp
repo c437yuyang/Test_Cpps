@@ -10,7 +10,15 @@ using namespace std;
 // (1)相同范围(同一个类或者同一作用域内)
 // (2)函数同名，参数不同(必须)，返回值任意，virtual任意
 
-// 2.覆盖（就是通常的virtual函数被继承，必须整个签名一致）
+#pragma region 来自newcoder
+//重载的概念是：
+//方法名称相同，参数个数、次序、类型不同
+//因此重载对返回值没有要求，可以相同，也可以不同
+//但是如果参数的个数、类型、次序都相同，方法名也相同，仅返回值不同，则无法构成重载  
+#pragma endregion
+
+
+// 2.覆盖(覆写)（就是通常的virtual函数被继承，必须整个签名一致）
 // (1)不同范围(基类与派生类)
 // (2)函数同名，参数相同，返回值相同（可以不同，Morexxx上7.1提到,
 // 但是在vs里面编译器会说，类型不同必须可协变，就是有继承关系的指针之间可以不同,用于虚拟拷贝构造函数）
@@ -29,31 +37,34 @@ using namespace std;
 
 class Base{
 public:
-	void mf1(); //(1)
-	void mf1(int); //(2)
-	int mf1(double); //(3) ,1,2,3之间是重载关系,注意，参数必须不同，返回值任意
+	void mf1() {}; //(1)
+	void mf1(int) {}; //(2)
+	int mf1(double) {}; //(3) ,1,2,3之间是重载关系,注意，参数必须不同，返回值任意
 
 
-	virtual void mf2();//(4)
+	virtual void mf2() {};//(4)
 
-	virtual void mf3();//(5)
+	virtual void mf3() { cout << "Base::mf3()" << endl; };//(5)
 
 
 };
 
 class Derived:public Base{
-	//void mf2();//(6)	(4),(6)是覆盖,返回值必须相同,若参数不同,则是隐藏
-	void mf2()  {  };
-	int mf2(int); //(7) 隐藏了父类的mf2
 
-	void mf3(int); //(8) 隐藏了父类的mf3
+public:
+	void mf2() {};//(6)	(4),(6)是覆盖,返回值必须相同,若参数不同,则是隐藏
+	int mf2(int) {}; //(7) 隐藏了父类的mf2
+
+	void mf3(int) {}; //(8) 隐藏了父类的mf3
+	//using Base::mf3; //使父类被隐藏了的函数可以被调用
 
 };
 
 int main()
 {
-
-
+	Derived d;
+	//d.Base::mf3(); //虽然被隐藏了，但是还是可以调用的(就算没声明using Base::mf3)
+	//d.mf3(); //有声明using Base::mf3的情况下可以调用,否则会报错
 
 	system("pause");
 	return 0;
