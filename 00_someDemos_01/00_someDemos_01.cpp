@@ -28,6 +28,18 @@ int main()
 	//void printInfo() { cout << " " << endl; } //报错
 #pragma endregion
 
+#pragma region 二维数组
+
+	int a[2][3] = { 1,2,3,4,5,6 };
+
+	//int a1 = (&a[0] + 1)[2];
+	int *p1 = (&a[0] + 1)[1];
+	cout << *p1 << endl;
+	//int *p = (&a[0] + 1); //表达式的类型是int(*)[3] ,一个指针，指向有三个成员的数组
+	int a2 = *(*(a + 1) + 2);
+	int a3 = ((int *)(&a[0] + 1))[2];
+
+#pragma endregion
 
 
 
