@@ -38,11 +38,29 @@ struct data {
 } too;
 
 
+class P  //虚函数一旦有一个就会占用4字节，去指向虚函数表，但是不管声明几个虚函数，都只占用四字节
+{
+public:
+	virtual ~P() = 0;
+	virtual void printInfo() {};
+};
+
+class P1 : public P
+{
+public:
+	virtual ~P1() = 0;
+	
+};
+
+
 int main()
 {
 
 	cout << sizeof(A) << endl; //24
 	cout << sizeof(A1) << endl; //8
+
+	cout << sizeof(P) << endl;//4
+	cout << sizeof(P1) << endl;//4
 
 	///实例化class A
 
