@@ -19,14 +19,24 @@ int main()
 
 	cout << m1["aa"] << endl;
 
-	pair<map<string, int>::iterator, bool> result = 
+	pair<map<string, int>::iterator, bool> result =
 		m1.insert(map<string, int>::value_type("aaaa", 4));//map的insert返回的是一个pair类型
+
+	cout << result.second << endl;//1，即true
+	cout << result.first->first << endl;//键值
+	cout << result.first->second << endl;//value
+
+	cout << m1["aaaaa"] << endl; //只要使用到了下标就会自行插入
 	
-	cout << result.second << endl;;
-	cout << result.first->first << endl;
+	auto it = m1.find("aaaa");
+	cout << (it == m1.end() ? "没找到":"找到了") << endl;
 
-	cout << result.first->second << endl;
+	it = m1.find("aaaaa");
+	cout << (it == m1.end() ? "没找到" : "找到了") << endl;
 
-		return 0;
+	it = m1.find("aaaaa1");
+	cout << (it == m1.end() ? "没找到" : "找到了") << endl;
+
+	return 0;
 }
 

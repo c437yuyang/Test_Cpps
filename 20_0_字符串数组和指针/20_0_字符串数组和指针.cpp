@@ -30,6 +30,10 @@ int main()
 	cout << ("hello" == "hello") << endl;//1 说明常量是固定位置的
 
 
+	char str6[] = "hello";
+	str6++; //直接报错了，数组是不允许改变指针值的，默认是常量指针
+	str[1] = 'a'; //这样是可以的
+
 	system("pause");
 	return 0;
 }
