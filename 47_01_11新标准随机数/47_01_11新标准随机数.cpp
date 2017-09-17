@@ -14,7 +14,7 @@ int main()
 	//for (size_t i = 0; i < 10; i++) {
 	//	cout << e() << endl;
 	//}
-	//默认情况下，引擎产生的随机数范围在default_randm_engine::min和default_random_engine::max之间。
+	//默认情况下，引擎产生的随机数范围在default_randm_engine::min()和default_random_engine::max()之间。
 #pragma endregion
 
 #pragma region 例2:产生5-20的均匀分布

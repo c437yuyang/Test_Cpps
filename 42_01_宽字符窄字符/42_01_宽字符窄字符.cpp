@@ -15,13 +15,18 @@ int main()
 	//但是可以查看string里每一个成员的值就发现其实是有乱码的(printf和cout做了处理)
 
 	//这里只讨论char*和wchar_t*两种数据类型，string和wstring用.cstr()取得一样的操作
-
+	
 	char *str = "ab我们cde"; //虽然单看每个字节是乱码，其实是因为采用的是GB2312编码
 	wchar_t *wstr = L"ab我们cde"; //宽字符貌似输出都
-
+	
+	setlocale(LC_ALL, ""); //必须加这个，宽字符才能正确输出
 	printf("%s\n", str);
-	printf("%ws\n", wstr); //%ws,%S都是输出宽字符
-	wprintf(L"%s", wstr); //也不能正常输出
+	printf("%s\n", wstr); //这个不行，只输出a，然后是\0
+	printf("%ws\n", wstr); //%ws,%S,%ls都是输出宽字符
+	printf("%ls\n", wstr); 
+	printf("%S\n", wstr); 
+	wprintf(L"%s\n", wstr); //也正常
+	wprintf(L"%ls\n", wstr); //也正常
 
 	//因为wchar_t可以用任何encoding的方式来存储字符，比如unicode,ANSI,UCS-2等等
 	//而wprintf是直接按照字节顺序输出，所有windows提供了将wchar_t转换成窄字符(多字节表示方式)的函数

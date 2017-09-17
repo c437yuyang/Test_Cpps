@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <set>
 #include <unordered_set>
-#include <hash_set>
+
 
 using namespace std;
 
@@ -69,20 +69,20 @@ int main()
 
 	set<int, more<int>> iset2 = { 3,2,1,3,4 };
 	for_each(iset2.begin(), iset2.end(), [](int i) {cout << i << " "; });
-
+	cout << endl;
 
 	multiset<int> ms1 = { 1,2,3 };
 	ms1.insert(1);
 	ms1.insert(2);
 	//multiset仍然是排序的，只是可以重复而已
-	for_each(ms1.begin(), ms1.end(), [](int i) {cout << i << " "; }); 
+	for_each(ms1.begin(), ms1.end(), [](int i) {cout << i << " "; });  //1 1 2 2 3
 
 
-	set<int, NoOrder<int>> iset3 = { 3,2,1,3,4 };
-	cout << endl;
-	//重新定义一个始终返回true的比较器就行了，就可以实现无序的set了，但是相同的却不会被去除,所以也就没有意义了
-	//并且自己判断!=的时候才返回true也不行，不知道为什么
-	for_each(iset3.begin(), iset3.end(), [](int i) {cout << i << " "; });
+	//set<int, NoOrder<int>> iset3 = { 3,2,1,3,4 }; //debug会直接报invalid comparator
+	//cout << endl;
+	////重新定义一个始终返回true的比较器就行了，就可以实现无序的set了，但是相同的却不会被去除,所以也就没有意义了
+	////并且自己判断!=的时候才返回true也不行，不知道为什么
+	//for_each(iset3.begin(), iset3.end(), [](int i) {cout << i << " "; });
 
 	cout << endl;
 	unordered_set<int> iset4 = { 1,3,2,19,21,5 };
@@ -104,6 +104,9 @@ int main()
 	//cout << endl;
 	//for_each(iset5.begin(), iset5.end(), [](int i) {cout << i << " "; });
 
+	//bucket_count()得到桶的数量
+	//bucket_size(i)可以访问每个桶的元素数量
+	
 
 	system("pause");
 	return 0;

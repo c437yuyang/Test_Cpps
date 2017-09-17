@@ -6,13 +6,15 @@
 #include <map>
 #include <iostream>
 #include <string>
+#include <unordered_map>
+#include <algorithm>
 using namespace std;
 
 
 int main()
 {
 
-	map<string, int> m1 = {
+	map<string, int> m1 = { //初值列表形式
 		map<string, int>::value_type("aa",2),
 		map<string, int>::value_type("aaa",3)
 	};
@@ -36,6 +38,20 @@ int main()
 
 	it = m1.find("aaaaa1");
 	cout << (it == m1.end() ? "没找到" : "找到了") << endl;
+
+
+	//unordered版本使用
+	unordered_map<string, int> table = {
+		unordered_map<string, int>::value_type("aa",1),
+		unordered_map<string, int>::value_type("bb",2),
+		unordered_map<string, int>::value_type("cc",3),
+		unordered_map<string, int>::value_type("dd",4)
+	};
+
+
+	for_each(table.begin(), table.end(), [](const unordered_map<string, int>::value_type& val) {cout << val.first << "-" << val.second << endl; });
+
+
 
 	return 0;
 }
