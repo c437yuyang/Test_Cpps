@@ -2,8 +2,16 @@
 //
 
 #include "stdafx.h"
+#include <vector>
+#include <string>
 #include <iostream>
 using namespace std;
+
+void f(int& i) { std::cout << "lvalue ref: " << i << "\n"; }
+void f(int&& i) { std::cout << "rvalue ref: " << i << "\n"; }
+
+
+
 
 int main()
 {
@@ -17,6 +25,21 @@ int main()
 	int &&r5 = std::move(i);
 
 	cout << r1 << endl;
+
+	{
+		//http://blog.csdn.net/wangshubo1989/article/details/49745781
+		int i = 77;
+		f(i);    // lvalue ref called
+		f(99);   // rvalue ref called
+
+		f(std::move(i));  // 显式调用右值版本
+		//如果一个表达式的结果是一个暂时的对象，那么这个表达式就是右值
+		//如:
+		vector<string> v;
+		v.push_back(string("aa")); //其中这个临时对象string("aa")就是右值的，调用的push_back也是右值版本的
+	}
+
+	
 
 	system("pause");
     return 0;

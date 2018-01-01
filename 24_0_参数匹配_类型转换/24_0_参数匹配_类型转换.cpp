@@ -16,6 +16,19 @@ int main()
 	f1(1 + 'a'); //匹配int
 	f1('c'); //匹配Int
 
+	//demo1
+	{
+		int a = 'A' + 1.6; //1.6转型成1
+	}
+
+
+	//无符号数与有符号数进行混合运算的时候，有符号数会自动转换成无符号数
+	{
+		int n = -1;
+		unsigned int i = 10;
+		cout << (i < n) << endl; //true,-1转换为无符号数后反而是一个很大的值
+	}
+
 	system("pause");
     return 0;
 }

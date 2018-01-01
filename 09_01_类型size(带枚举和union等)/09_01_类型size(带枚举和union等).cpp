@@ -18,9 +18,9 @@ using namespace std;
 //(struct a里存有struct b, b里有char, int, double等元素, 那b应该从8的整数倍开始存储.)。
 //
 //3、收尾工作 : 结构体的总大小, 也就是sizeof的结果, .必须是其内部最大成员的"最宽基本类型成员"的整数倍.不足的要补齐.
-//(基本类型不包括struct / class / uinon)。
+//(基本类型不包括struct / class / uinon / 数组)。
 //
-//4、sizeof(union)，以结构里面size最大元素为union的size, 因为在某一时刻，union只有一个成员真正存储于该地址。
+//4、sizeof(union)，以结构里面size最大元素为union的size, 因为在某一时刻，union只有一个成员真正存储于该地址。(仍然要考虑内存对齐)
 
 
 //一些说明
@@ -36,6 +36,8 @@ using namespace std;
 //10.union或者sturct或者枚举如果定义在类内部，如果只是定义，但不实例化一个对象的话，是不占取字节的
 //11.柔性数组，直接不占字节，如果只有一个柔性数组成员，可直接理解为空，即占一个字节
 //12.static成员不考虑大小
+//13.内存对齐规定：结构体的总大小为结构体最宽基本类型成员大小的整数倍,数组的形式只是多个数据放在一起而已。
+//14.记住结构体中每一个成员（每一个成员，这个成员就是包括union和struct在内）的起始地址要是 该成员大小的整数倍。
 
 int main()
 {
@@ -198,6 +200,53 @@ int main()
 		cout << sizeof(B) << endl; //24
 
 		cout << sizeof(int *) << endl;
+	}
+
+
+	//case8 位域的情况
+	{
+		//指定位域，xyz一共占用一个字节
+		struct s
+		{
+			int x : 3;
+			int y : 4;
+			int z : 5;
+			int x1 : 3;
+			int x2 : 17; //只要前面不超出一个int占得字节(32位)，就公用一个int的长度
+						 //所以17就输出8，18就输出12
+			int num1;
+		};
+		cout << sizeof(s) << endl; //8,前面xyz,x1,x2公用一个字节
+	}
+
+
+	//case 9 数组和union
+	{
+		struct stu
+		{
+			union
+			{
+				char bj[5];
+				short bh[2];
+			} demo;
+			char xm[8];
+			float cj;
+		}xc;
+		cout << sizeof(stu::demo) << endl;//6 ,因为char数组占用5个字节，short数组占用4个字节，最宽基本类型是short，按照2的倍数填充，占用6
+		std::cout << sizeof(stu) << endl; //20, union占用6个字节，但是最宽基本类型是float，因此按照4的倍数进行对齐，占用6+2,char数组刚好8，float占用4个字节，最终8+8+4=20
+	}
+
+
+	//case 10 union的内存对齐
+	{
+		union
+		{
+			int m, n, y;
+			char arr[5];
+		} mm;
+		cout << sizeof(mm) << endl; //8 虽然最大成员是5，但是要考虑最宽基本类型是int，然后进行内存对齐
+
+
 	}
 
 

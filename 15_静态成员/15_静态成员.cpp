@@ -6,7 +6,9 @@
 using namespace std;
 
 class TestStatic {
-	//static const int memCount = 0; //如果要在类内进行初始化的话，必须设为常量值
+	//static const int memCount = 0; //如果要在类内进行初始化的话，必须设为常量值,且是整形的变量才行
+	//const static double salary = 0.0; //错误，不是整形
+	const static char a = 'a'; //const char 类型也可以类内初始化
 
 	static int memCount; //静态成员同样遵循访问修饰控制符的权限控制
 

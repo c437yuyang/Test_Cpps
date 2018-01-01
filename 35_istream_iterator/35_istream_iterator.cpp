@@ -55,24 +55,31 @@ int main()
 
 
 #pragma region istream_iterator快速使用介绍
-	//istream_iterator<int> it1(cin);
-	//istream_iterator<int> it2;
+	istream_iterator<int> it1(cin);
+	istream_iterator<int> it2;
 
-	//while (it1 != it2)
-	//{
-	//	cout << *it1 << " ";
-	//	it1++;
-	//}
+	while (it1 != it2) //只有当输入不是符合条件的值的时候才停止
+	{
+		cout << *it1 << " ";
+		it1++;
+	}
+	cin.clear();
 
+	istream_iterator<string> it11(cin);
+	istream_iterator<string> it21;
 
-	//istream_iterator<string> it1(cin);
-	//istream_iterator<string> it2;
+	while (it11 != it21) //windows输入ctrl+z才能结束，linux必须输入ctrl+d
+	{
+		cout << *it11 << " ";
+		it11++;
+	}
 
-	//while (it1 != it2)
-	//{
-	//	cout << *it1 << " ";
-	//	it1++;
-	//}
+	char ch;
+	while ((ch = getchar()) != '\0') //必须输入ctrl+@('\0')才能结束，这个所有系统都是一样的
+	{
+		cout << ch << endl;
+	}
+
 
 #pragma endregion
 

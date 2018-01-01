@@ -51,7 +51,19 @@ int main()
 
 	for_each(table.begin(), table.end(), [](const unordered_map<string, int>::value_type& val) {cout << val.first << "-" << val.second << endl; });
 
+	for (auto it = table.begin(); it != table.end();)
+	{
+		if (it->second == 2) 
+		{
+			it = table.erase(it); //erase后返回下一个位置的迭代器
+		}
+		else
+		{
+			++it;
+		}
+	}
 
+	for_each(table.begin(), table.end(), [](const unordered_map<string, int>::value_type& val) {cout << val.first << "-" << val.second << endl; });
 
 	return 0;
 }

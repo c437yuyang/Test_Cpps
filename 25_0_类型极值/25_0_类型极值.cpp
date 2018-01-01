@@ -5,8 +5,14 @@
 #include <iostream>
 using namespace std;
 
+constexpr int size1(int i) 
+{
+	return i+1;
+}
+
 int main()
 {
+	int arr[size1(3)];
 
 	short s1 = 65537; //short最大表示65535,65536就是0,65537就是1
 

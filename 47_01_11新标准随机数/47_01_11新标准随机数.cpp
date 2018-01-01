@@ -4,10 +4,32 @@
 #include "stdafx.h"
 #include <random>
 #include <iostream>
+#include <map>
 using namespace std;
+
+inline int randInt(int m,int  n) 
+{
+	//srand(0); //这个一定要写在外面
+	return rand() % (n - m + 1) + m; //产生m-n的随机数
+}
 
 int main()
 {
+
+	srand(0);
+#pragma region 旧式
+	int m = 10, n = 30;
+	int nTestTime = 1000000;
+	map<int, int> hist;
+	for (int i=0;i!=nTestTime;++i)
+		++hist[randInt(m, n)];
+	for (auto it=hist.begin();it!=hist.end();++it)
+		cout << it->first << ":" << it->second / (double)nTestTime << endl;
+	//验证可知确实是均匀分布的
+
+#pragma endregion
+
+
 #pragma region 例子1,就和以前的rand差不多
 	//std::default_random_engine e;
 
