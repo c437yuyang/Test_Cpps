@@ -228,11 +228,13 @@ int main()
 
 	{
 
-			std::vector<int> v;
-			auto it = v.end();
-			--v.end();
-			int * func();
-			//int *p = --func(); // 报错，C++不允许对内置类型的临时变量进行修改
+		std::vector<int> v = { 1,2,3 };
+
+		auto it = v.end();
+		it = --v.end(); //这里如果有值的话还是可以修改的，如果没有的话(比如空容器)就会报错
+
+		int * func();
+		//int *p = --func(); // 报错，C++不允许对内置类型的临时变量进行修改
 	}
 
 	::system("pause");

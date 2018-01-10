@@ -6,7 +6,8 @@
 using namespace std;
 
 class TestStatic {
-	//static const int memCount = 0; //如果要在类内进行初始化的话，必须设为常量值,且是整形的变量才行
+	//static const int memCount = 0; //如果要在类内进行初始化的话，必须设为常量值,且是整形(ints,chars,bools)的变量才行
+	//其实这里还是声明式，并不是定义式，如果要取它的地址的话，就还必须提供定义式(可以不给值了，声明的时候给了)，详情请看effective C++ M2
 	//const static double salary = 0.0; //错误，不是整形
 	const static char a = 'a'; //const char 类型也可以类内初始化
 

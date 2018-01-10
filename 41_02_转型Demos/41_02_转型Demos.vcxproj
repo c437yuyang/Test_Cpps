@@ -19,11 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B41AA98E-324D-4FB3-A89D-5E81FB295878}</ProjectGuid>
+    <ProjectGuid>{C31729F6-B481-4D4C-964F-B65713DBF7B9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>My41_新式转型</RootNamespace>
+    <RootNamespace>My41_02_转型Demos</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>41_01_新式转型</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -150,7 +149,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="41_新式转型.cpp" />
+    <ClCompile Include="41_02_转型Demos.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

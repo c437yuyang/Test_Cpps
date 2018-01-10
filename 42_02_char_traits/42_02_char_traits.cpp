@@ -32,17 +32,17 @@ struct ci_char_traits :public std::char_traits<char>
 		return n >= 0 ? s : 0;
 	}
 
-	std::ostream& operator<<(std::ostream & os) //因为cout 实际上是 basic_ostream<char,ci_char_traits>，因此这个类不能用cout来输出(也可以用.c_str()来实现)，所以得自己改写
-	{
-		//具体实现不管，只看这个路程
-	}
+	//std::ostream& operator<<(std::ostream & os) //因为std::cout 实际上是 std::basic_ostream<char,std::char_traits<char>>，因此这个类不能用cout来输出(也可以用.c_str()来实现)，所以得自己改写
+	//{
+	//	//具体实现不管，只看这个路程
+	//}
 
 };
 typedef std::basic_string<char, ci_char_traits> ci_string;
 
 std::ostream& operator<<(std::ostream & os,ci_string str)
 {
-	return os << str; //外部类调用类内部的operator<<
+	return os << str.c_str(); //这里必须调用 os << str.c_str()才行，直接调用os << str 之所以不报错，是因为递归调用自身了
 }
 
 
@@ -55,6 +55,8 @@ int main()
 
 	assert(s1 == s2);
 	std::cout << s1 << std::endl; //
+
+
 
 	system("pause");
     return 0;

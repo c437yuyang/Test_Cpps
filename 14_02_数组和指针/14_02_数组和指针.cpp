@@ -18,6 +18,14 @@ int main()
 		*(p[0] + 1); //´ú±ía[1][1]
 	}
 
+	{
+		char a['10'];
+	}
+	{
+#define size 10
+		char str1[size], str2[size + 2];
+	}
+
     return 0;
 }
 
